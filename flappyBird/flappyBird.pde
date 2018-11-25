@@ -24,6 +24,7 @@ void draw(){
   fill(255,255,255);
   textSize(36);
   text("You got a concussion!\n          Score: " + score,10,200);
+  dedsound.trigger();
   }else if(hitBounds() == true) {
   fill(255,255,255);
   textSize(36);

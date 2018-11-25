@@ -11,40 +11,53 @@ void setup() {
 }
 Car last = new Car(20, 50, 75, 15);
 Car kachow = new Car(20,250, 50, 10);
-Car howdy = new Car(380,300, 50, -5);
-Car kerchuga = new Car(380,350, 50, 5);
-Car oof = new Car(380,100, 30, 30);
-Car owo = new Car(380,150, 230, 1);
-Car a = new Car(380,400, 50, 3);
-Car b = new Car(380,450, 60, -5);
-Car c = new Car(380,500, 60, 5);
-Car d = new Car(380,550, 150, 1);
-Car e = new Car(380,600, 75, -3);
-Car f = new Car(380,650, 50, 5);
-Car g = new Car(380,700, 20, -20);
+Car howdy = new Car(200,300, 50, -5);
+Car kerchuga = new Car(200,350, 50, 5);
+Car oof = new Car(200,100, 10, 40);
+Car owo = new Car(380,150, 250, 1);
+Car uwu = new Car(70,150, 250, 1);
+//Car a = new Car(200,400, 50, 3);
+Car b = new Car(200,450, 60, -5);
+Car c = new Car(200,500, 60, 5);
+Car d = new Car(200,550, 150, 1);
+Car e = new Car(200,600, 75, -3);
+Car f = new Car(200,650, 50, 5);
+Car g = new Car(200,700, 20, -20);
 int yFrog = 775;
 int xFrog = 200;
 int frogLeg = 50;
+int deaths = 0;
 void draw() {
-  background(150,150,150);
+  //victory royale
+  if(yFrog<=50) {
+  background(0,0,0);
+  fill(255,255,255);
+  textSize(70);
+  text("YOU WON!\nDeaths: " + deaths, 20,350);
+  }else{
+  background(0,0,0);
+  uwu.run();
   last.run();
   kerchuga.run();
   kachow.run();
   howdy.run();
   oof.run();
   owo.run();
-  a.run();
+ // a.run();
   b.run();
   c.run();
   d.run();
   e.run();
   f.run();
   g.run();
+  textSize(30);
+  text("Deaths: " + deaths,250,30);
   strokeWeight(5);
-  stroke(150,150,150);
+  stroke(0,0,0);
   fill(0,255,0);
   ellipse(xFrog, yFrog, 50, 50);
   invisWall();
+  }
 }
 void keyPressed()
 {
@@ -108,9 +121,9 @@ public class Car {
   }
   void snake() {
     if(x > 400) {
-      x = 0-x;
-    }else if(x < 0) {
-      x = 400+x;
+      x = 0-size;
+    }else if(x < 0-size) {
+      x = 400;
     }
   }
   int getX() {
@@ -125,6 +138,8 @@ public class Car {
     void roadkill() {
   if(xFrog>=x && xFrog<=x + size && yFrog>=y && yFrog <=y+50) {
     yFrog = 775;
+    deaths++;
+    dedsound.trigger();
   }
 }
   void run() {

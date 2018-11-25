@@ -4,6 +4,8 @@
  */
 
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -11,7 +13,9 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
@@ -19,7 +23,7 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /* 1. Download the JavaZoom jar from here: http://bit.ly/javazoom
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
+public class Jukebox implements Runnable, MouseListener {
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
@@ -29,9 +33,16 @@ public class Jukebox implements Runnable {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-
+        Song tunak = 	new Song("Tunak Tunak Tun Video.mp3"); 	//from default package 
+        Song rick =	new Song("Never Gonna Give You Up.mp3"); 
+        Song ali = 	new	Song("Ali-A.wav"); 
+        Song wayne =  	new	Song("batman.wav"); 
+        Song chopin =	new	Song("funeral-march.wav"); 
+        Song funk = 	new	Song("celebration.mp3"); 
+        	Song whatIs = new	Song("jeopardy.wav"); 
+        	Song queen = new	Song("We Will Rock You.mp3"); 
+        	Song wii = new	Song("Mii Channel Music.mp3"); 
 		// 5. Play the Song
-
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -39,12 +50,79 @@ public class Jukebox implements Runnable {
 		 * cover is clicked, stop the currently playing song, and play the one
 		 * that was selected.
 		 */
+        	JFrame a = new JFrame();
+        a.setVisible(true);
+        a.setSize(1000, 1000);
+        	a.setTitle("JukeBox RoBlox");
+        	a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	JPanel b = new JPanel();
+        	a.add(b);
+        	JLabel c = loadImage("tunak.jpeg");
+        	JLabel d = loadImage("rickRolled.jpeg");
+        	JLabel e = loadImage("ali-a.jpeg");
+        	JLabel f = loadImage("batman.jpeg");
+        	JLabel g = loadImage("chopin.jpeg");
+        	JLabel h = loadImage("celebration.jpeg");
+        	JLabel i = loadImage("jeopardy.jpeg");
+        	JLabel j = loadImage("weWillRockYou.jpeg");
+        	JLabel k = loadImage("miiChannel.jpeg");
+        	a.addMouseListener(this);
+        	b.addMouseListener(this);
+        	c.addMouseListener(this);
+        	d.addMouseListener(this);
+        	e.addMouseListener(this);
+        f.addMouseListener(this);
+        g.addMouseListener(this);
+        h.addMouseListener(this);
+        i.addMouseListener(this);
+        j.addMouseListener(this);
+        k.addMouseListener(this);
+        a.pack();
+        b.add(c);
+        b.add(d);
+        b.add(e);
+        b.add(f);
+        b.add(g);
+        b.add(h);
+        b.add(i);
+        b.add(j);
+        a.pack();
           }
 	/* Use this method to add album covers to your Panel. */
 	private JLabel loadImage(String fileName) {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
