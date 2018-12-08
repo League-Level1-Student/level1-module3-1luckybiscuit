@@ -4,6 +4,7 @@
  */
 
 
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileInputStream;
@@ -28,20 +29,28 @@ public class Jukebox implements Runnable, MouseListener {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
-
+	Song tunak = 	new Song("Tunak Tunak Tun Video.mp3"); 	//from default package 
+    Song rick =	new Song("Never Gonna Give You Up.mp3"); 
+    Song ali = 	new	Song("Ali-A.mp3"); 
+    Song wayne =  	new	Song("Eye of the Tiger.mp3"); 
+    Song chopin =	new	Song("Funeral.wav"); //Not Working
+    Song funk = 	new	Song("celebration.wav"); //Not Working 
+    	Song whatIs = new	Song("jeopardy.wav");  //Not Working
+    	Song queen = new	Song("RockYou.mp3"); 
+    	Song wii = new	Song("Mii Channel Music.mp3"); 
+	JLabel c = loadImage("tunak.jpeg");
+	JLabel d = loadImage("rickRolled.jpeg");
+	JLabel e = loadImage("ali-a.jpg");
+	JLabel f = loadImage("batman.jpg");
+	JLabel g = loadImage("chopin.jpeg");
+	JLabel h = loadImage("celebration.jpg");
+	JLabel i = loadImage("jeopardy.jpg");
+	JLabel j = loadImage("weWillRockYou.jpg");
+	JLabel k = loadImage("miiChannel.jpeg");
            public void run() {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-        Song tunak = 	new Song("Tunak Tunak Tun Video.mp3"); 	//from default package 
-        Song rick =	new Song("Never Gonna Give You Up.mp3"); 
-        Song ali = 	new	Song("Ali-A.wav"); 
-        Song wayne =  	new	Song("batman.wav"); 
-        Song chopin =	new	Song("funeral-march.wav"); 
-        Song funk = 	new	Song("celebration.mp3"); 
-        	Song whatIs = new	Song("jeopardy.wav"); 
-        	Song queen = new	Song("We Will Rock You.mp3"); 
-        	Song wii = new	Song("Mii Channel Music.mp3"); 
 		// 5. Play the Song
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
@@ -50,24 +59,16 @@ public class Jukebox implements Runnable, MouseListener {
 		 * cover is clicked, stop the currently playing song, and play the one
 		 * that was selected.
 		 */
+        	int dimension = 370;
         	JFrame a = new JFrame();
         a.setVisible(true);
-        a.setSize(1000, 1000);
+        a.setPreferredSize(new Dimension(1900, 780));
         	a.setTitle("JukeBox RoBlox");
         	a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	JPanel b = new JPanel();
         	a.add(b);
-        	JLabel c = loadImage("tunak.jpeg");
-        	JLabel d = loadImage("rickRolled.jpeg");
-        	JLabel e = loadImage("ali-a.jpeg");
-        	JLabel f = loadImage("batman.jpeg");
-        	JLabel g = loadImage("chopin.jpeg");
-        	JLabel h = loadImage("celebration.jpeg");
-        	JLabel i = loadImage("jeopardy.jpeg");
-        	JLabel j = loadImage("weWillRockYou.jpeg");
-        	JLabel k = loadImage("miiChannel.jpeg");
-        	a.addMouseListener(this);
-        	b.addMouseListener(this);
+        	//Loads Image
+        	//Adds mouse listener
         	c.addMouseListener(this);
         	d.addMouseListener(this);
         	e.addMouseListener(this);
@@ -77,7 +78,17 @@ public class Jukebox implements Runnable, MouseListener {
         i.addMouseListener(this);
         j.addMouseListener(this);
         k.addMouseListener(this);
-        a.pack();
+        //Set image size
+        c.setPreferredSize(new Dimension(dimension,dimension));
+        d.setPreferredSize(new Dimension(dimension,dimension));
+        e.setPreferredSize(new Dimension(dimension,dimension));
+        f.setPreferredSize(new Dimension(dimension,dimension));
+        g.setPreferredSize(new Dimension(dimension,dimension));
+        h.setPreferredSize(new Dimension(dimension,dimension));
+        i.setPreferredSize(new Dimension(dimension,dimension));
+        j.setPreferredSize(new Dimension(dimension,dimension));
+        k.setPreferredSize(new Dimension(dimension,dimension));
+        //Adds to panel
         b.add(c);
         b.add(d);
         b.add(e);
@@ -86,6 +97,7 @@ public class Jukebox implements Runnable, MouseListener {
         b.add(h);
         b.add(i);
         b.add(j);
+        b.add(k);
         a.pack();
           }
 	/* Use this method to add album covers to your Panel. */
@@ -96,9 +108,37 @@ public class Jukebox implements Runnable, MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent oof) {
 		// TODO Auto-generated method stub
-		
+		tunak.stop();
+		rick.stop();
+		ali.stop();
+		wayne.stop();
+		chopin.stop();
+		funk.stop();
+		whatIs.stop();
+		queen.stop();
+		wii.stop();
+	   	 JLabel drumClicked = (JLabel) oof.getSource();  
+	   	 if(drumClicked == c) {
+	   		 tunak.play();
+	   	 }else if(drumClicked == d) {
+	   		 rick.play();
+	   	 }else if(drumClicked == e) {
+	   		 ali.play();
+	   	 }else if(drumClicked == f) {
+	   		 wayne.play();
+	   	 }else if(drumClicked == g) {
+	   		chopin.play();
+	   	 }else if(drumClicked == h) {
+	   		 funk.play();
+	   	 }else if(drumClicked == i) {
+	   		 whatIs.play();
+	   	 }else if(drumClicked == j) {
+	   		 queen.play();
+	   	 }else if(drumClicked == k) {
+	   		 wii.play();
+	   	 }
 	}
 
 	@Override
