@@ -11,11 +11,14 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import javazoom.jl.decoder.JavaLayerException;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
 
@@ -31,6 +34,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 */
 
 	BufferedImage backgroundImage;
+	MediaPalace owo = new MediaPalace();
 
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
@@ -56,6 +60,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.addMouseListener(this);
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -75,7 +80,27 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		Random a = new Random();
+		int b = a.nextInt(3);
+		if(b == 0) {
+			System.out.println("1");
+			owo.loadSound("Ali-A.wav");
+
+			
+			owo.loadImageFromWithinProject("ali-a.jpg");
+		}else if(b == 1) {
+			System.out.println("2");
+			try {
+				owo.playMp3FromComputer("Mii Channel Music.mp3");
+			} catch (JavaLayerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			owo.loadImageFromWithinProject("miiChannel.jpg");
+		}else {
+			System.out.println("3");
+			owo.speak("yeet yeet yeet");
+		}
 	}
 
 	@Override
