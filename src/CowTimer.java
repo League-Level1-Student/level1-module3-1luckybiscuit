@@ -10,14 +10,15 @@ import javax.swing.JApplet;
 public class CowTimer {
 	/*
 	 * This is an advanced recipe. There may be more than one line of code for each
-	 * instruction. Work in seconds when testing, then change to minutes
+	 * instruction. Work in seconds when testing (what does this even mean), then change to minutes
 	 */
 
 	public static void main(String[] args) throws InterruptedException {
 		/* 1. Make a CowTimer, set the time and start it. */
-
+		CowTimer TowCimer = new CowTimer();
+		TowCimer.setTime(1);
+		TowCimer.start();
 	}
-
 	private int minutes;
 
 	public void setTime(int minutes) {
@@ -30,13 +31,16 @@ public class CowTimer {
 		 * 2. Count down the minutes, print the current minute then sleep for 60 seconds
 		 * using Thread.sleep(int milliseconds).
 		 */
+		System.out.println(minutes);
+		Thread.sleep(/*60*/1000*minutes);
 
 		/*
 		 * 3. When the timer is finished, use the playSound method to play a moo sound.
 		 * You can use the .wav file in the default package, or you can download one
 		 * from freesound.org, then drag it intothe default package.
 		 */
-
+		speak("what do you call a cow with no legs. ground beef");
+		speak("what do you call a dancing cow. a milkshake");
 	}
 
 	private void playSound(String fileName) {
